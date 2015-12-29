@@ -48,14 +48,15 @@ public class ComputeBestOffer {
 			}
 		finally{
 		}
-
-        if(str==null)	return false;
 		
 	    //Initially, split the file in his three parts, rates, offers and options.
 	    str=str.replace('\r', ' ');
 	    String[] parts=str.split("&");
 	    
-	    if(parts.length<3) return false;
+	    if(parts.length<3){
+	    	System.out.println("Invalid number of sections");
+	    	return false;
+	    }
 	    
 	    int line=1;
 	    boolean error=false;
@@ -68,7 +69,7 @@ public class ComputeBestOffer {
 	    	error|=rates.get(i).error;
 	    	if(error) {
 		    	System.out.println("error on line: "+line);
-				return true;
+				return false;
 			}
 	    	line++;
 	    }
@@ -82,7 +83,7 @@ public class ComputeBestOffer {
 	    	error|=offers.get(i-1).error;
 	    	if(error) {
 		    	System.out.println("error on line: "+line);
-				return true;
+				return false;
 			}
 	    	line++;
 	    }
@@ -96,7 +97,7 @@ public class ComputeBestOffer {
 	    	error|=options.get(i-1).error;
 	    	if(error) {
 		    	System.out.println("error on line: "+line);
-				return true;
+				return false;
 			}
 	    	line++;
 	    }

@@ -8,6 +8,7 @@ public class Main {
 		if(ComputeBestOffer.checkOffers("fileOfOffers"))
 			System.out.println("ok");
 		
+		
 	}
 
 }
